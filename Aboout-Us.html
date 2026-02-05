@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html>
+    <title>About Us</title>
+        <link rel="icon" type="image/jpg" href="icon.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+
+    body{
+   padding-top: 80px;
+   background-color: #f4f1ec;
+   line-height: 1.6;
+  }
+
+  html, body{
+    min-height: 100%;
+  }
+
+    header {
+      background-color: rgb(0, 0, 0);
+      width: 100%;
+      padding: 1.5rem 1rem;
+      justify-content: space-between;
+      display:flex;
+      flex-direction: row;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      height: 95px;
+    }
+
+.stacked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:0.7rem;
+  order: 3;
+  align-items: flex-end;
+  font-family: 'Times New Roman', Times, serif;
+  padding-bottom: 0.4rem;
+}
+
+   .hamburger {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width:35px;
+    height: 20px;
+    background-color: transparent;
+    border:none;
+    cursor: pointer;
+    color: white;
+    padding: 0%;
+    margin: 0%;
+    order: 1;
+  }
+
+*{
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+  .hamburger span {
+    width:30px;
+    height:2px;
+    background-color: rgb(255, 255, 255);
+    transition: all 0.5s ease;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 95px;
+    left:-100%;
+    width:170px;
+    height:100%;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    transition:left 0.5s ease; 
+  }
+
+  .nav-menu.active{
+    left: 0;
+  }
+
+  .hamburger.active span:nth-child(1){
+    transform:rotate(45deg) translate(5px, 6px);
+  }
+
+   .hamburger.active span:nth-child(2){
+    opacity:0;
+  }
+
+   .hamburger.active span:nth-child(3){
+    transform:rotate(-45deg) translate(5px, -6px);
+  }
+
+  @media (mid-width:768px){
+    .hamburger{
+      display: none;
+    }
+  
+
+  .nav-menu{
+    position:static;
+    flex-direction: row;
+    width: auto;
+    height: auto;
+    left:0;
+    transition:right 0.7s ease-in-out; 
+  }
+}
+
+.nav-menu a{
+  color:white;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.title {
+  color: white;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  font-weight: bold;
+  align-content: center;
+  margin: 0%;
+  padding: 0%;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  height: 23px;
+}
+
+.subtitle{
+  padding: 0%;
+  margin: 0%;
+  text-align: center;
+  color: white;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 13px;
+  background-color: transparent;
+  border: none;
+  justify-content: center;
+  height: 16px;
+}
+
+.logo {
+  order: 2;
+  margin-right: 130px;
+  max-height: 10px;
+  flex:1;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+  display: block;
+}
+
+.overley-third {
+    width: 600px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 75px;
+}
+
+.overley-text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    padding-top: 25px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.overley-second {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    font-style: italic;
+    align-items: center;
+}
+
+.image-container {
+    align-items: center;
+    height: 500px;
+}
+
+.space-between{
+    height: 50px;
+}
+
+.social-footer{
+  background: #111;
+  padding: 2rem;
+}
+
+.social-icons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2.7rem;
+}
+
+.social-icon {
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.social-icon svg{
+  width: 22px;
+  height: 22px;
+  transition: all 0.3s ease;
+}
+
+.social-icons:hover .social-icon{
+  opacity:0.3;
+}
+
+.social-icons:hover .social-icon:hover {
+  opacity: 1;
+  color: #ffffff;
+  transform: scale(1.2);
+}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            min-height: 100%;
+            background: #f8f7f4;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #2c2c2c;
+            line-height: 1.6;
+        }
+
+        .about-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .page-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .page-header .divider {
+            width: 60px;
+            height: 1px;
+            background: #b8a88a;
+            margin: 1.5rem auto;
+        }
+
+        .page-header p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 6rem;
+            align-items: center;
+        }
+
+        @media (max-width: 800px) {
+            .story-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .story-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-content p {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: #555;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-image {
+            height: 400px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .story-image::before {
+            content: '';
+            position: absolute;
+            inset: 20px;
+            border: 1px solid #b8a88a;
+            opacity: 0.5;
+        }
+
+        .story-image .placeholder-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: #b8a88a;
+            letter-spacing: 0.1em;
+        }
+
+        .values-section {
+            background: #fff;
+            padding: 5rem 4rem;
+            margin-bottom: 6rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        @media (max-width: 600px) {
+            .values-section {
+                padding: 3rem 2rem;
+            }
+        }
+
+        .values-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        @media (max-width: 800px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .value-item {
+            text-align: center;
+        }
+
+        .value-item .icon {
+            font-size: 1.5rem;
+            color: #b8a88a;
+            margin-bottom: 1rem;
+        }
+
+        .value-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 0.75rem;
+        }
+
+        .value-item p {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .team-section {
+            margin-bottom: 4rem;
+        }
+
+        .team-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .team-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .team-header .divider {
+            width: 40px;
+            height: 1px;
+            background: #b8a88a;
+            margin: 1rem auto;
+        }
+
+        .team-header p {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: #666;
+        }
+
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        @media (max-width: 900px) {
+            .leadership-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        .leader-card {
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .leader-photo {
+            height: 320px;
+            background: linear-gradient(145deg, #e8e6e1 0%, #d4d0c7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leader-photo .initials {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 400;
+            color: #8b7355;
+            opacity: 0.6;
+        }
+
+        .leader-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .leader-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+        }
+
+        .leader-info .title {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #b8a88a;
+            margin-bottom: 1rem;
+        }
+
+        .leader-info p {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #888;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 1000px) {
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        .team-card {
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(145deg, #e8e6e1 0%, #d4d0c7 100%);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-photo .initials {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: #8b7355;
+            opacity: 0.6;
+        }
+
+        .team-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-card .title {
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #888;
+        }
+
+
+        .cta-section {
+            margin-top: 6rem;
+            background: #1a1a1a;
+            padding: 5rem 3rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.25rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .cta-section p {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: #999;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.25rem 3rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-decoration: none;
+            background: transparent;
+            border: 1px solid #b8a88a;
+            color: #b8a88a;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #b8a88a;
+            color: #1a1a1a;
+        }
+
+        .profile{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+
+   <header>
+    <div class="stacked">
+    <div class="title">Emberstone Finance</div>
+    <div class="subtitle">Outlive your Money</div>
+    </div>
+    <div class="logo">
+        <img src="Logo.jpg" alt="Logo">
+    </div>
+    <button class="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    
+    <nav class="nav-menu">
+      <a href="http://127.0.0.1:5500/index.html">Home</a>
+      <a href="http://127.0.0.1:5500/Servicii.html">Services</a>
+      <a href="http://127.0.0.1:5500/Subscriptions.html">Subscriptions</a>
+      <a href="http://127.0.0.1:5500/Aboout-Us.html">About Us</a>
+      <a href="http://127.0.0.1:5500/News.html">News</a>
+      <a href="http://127.0.0.1:5500/Posturi%20de%20munca.html">Posturi de munca</a>
+      <a href="http://127.0.0.1:5500/Contact%20Us.html#">Contact Us</a>
+    </nav>
+   </header>
+
+
+    <section class="about-page">
+        <div class="page-header">
+            <h1>About Us</h1>
+            <div class="divider"></div>
+            <p>O moștenire de excelență în gestionarea averii, construită pe încredere, discreție și un angajament neclintit față de prosperitatea clienților noștri.</p>
+        </div>
+
+        <div class="story-section">
+            <div class="story-content">
+                <h2>Povestea noastră</h2>
+                <p>Fondată în 2025, firma noastră a fost înființată cu o viziune unică: să ofere persoanelor și familiilor exigente servicii de administrare a averii de o calitate și o discreție inegalabile.</p>
+                <p>De-a lungul anilor, am cultivat relații bazate pe încredere, oferind strategii personalizate care păstrează și sporesc averea generațională. Abordarea noastră combină principii consacrate cu inovație orientată spre viitor.</p>
+                <p>Astăzi, suntem mândri să deservim o clientelă distinsă care împărtășește angajamentul nostru față de excelență și prosperitate pe termen lung.</p>
+            </div>
+            <div class="story-image">
+                <span class="placeholder-text">Est. 2025</span>
+            </div>
+        </div>
+
+        <div class="values-section">
+            <h2>Principiile noastre</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="icon">◆</div>
+                    <h3>Discretie</h3>
+                    <p>Confidențialitatea dumneavoastră este primordială. Operăm cu cea mai mare confidențialitate în fiecare interacțiune și tranzacție.</p>
+                </div>
+                <div class="value-item">
+                    <div class="icon">◆</div>
+                    <h3>Integritate</h3>
+                    <p>Reputația noastră este construită pe standarde etice de neclintit și pe o comunicare transparentă cu clienții noștri.</p>
+                </div>
+                <div class="value-item">
+                    <div class="icon">◆</div>
+                    <h3>Excelenta</h3>
+                    <p>Urmărim doar rezultate excepționale, ghidați de expertiza perfecționată de-a lungul deceniilor de practică.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-section">
+            <div class="team-header">
+                <h2>Echipa Noastra</h2>
+                <div class="divider"></div>
+                <p>Persoanele din spatele succesului nostru</p>
+            </div>
+
+            <div class="section-label">Leadership</div>
+            <div class="leadership-grid">
+                <div class="leader-card">
+                    <div class="leader-photo">
+                        <img class="profile" src="David.jpeg">
+                    </div>
+                    <div class="leader-info">
+                        <h3>Sofian David-Marian</h3>
+                        <div class="title">Director Adjunct - departament IT</div>
+                        <p>Implementează soluții digitale și tehnologice menite să optimizeze procesele interne și să asigure protecția riguroasă a datelor companiei.</p>
+                    </div>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-photo">
+                        <img class="profile" src="Ioan.jpg">
+                    </div>
+                    <div class="leader-info">
+                        <h3>Derevlean Ioan</h3>
+                        <div class="title">Founder & Chief Executive</div>
+                        <p>Coordonează direcția strategică și dezvoltarea companiei, veghează asupra alinierii tuturor departamentelor și menține performanța la un nivel de excelență constantă.</p>
+                    </div>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-photo">
+                        <img class="profile" src="Dani.jpg">
+                    </div>
+                    <div class="leader-info">
+                        <h3>Ihnatiuc Daniel</h3>
+                        <div class="title">Director Adjunct - departament marketing</div>
+                        <p>Elaborează strategii de marketing și comunicare menite să consolideze prestigiul companiei și să sporească vizibilitatea acesteia în mod coerent și sustenabil.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-label">Consultanți & asociați</div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img class="profile" src="Cezara.jpeg">
+                    </div>
+                    <h3>Lungu Cezara</h3>
+                    <div class="title">Trainer in concepte de baza</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img class="profile" src="Mari.jpg">
+                    </div>
+                    <h3>Zaiet Marioara</h3>
+                    <div class="title">Consultanta startup-uri si afaceri</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img class="profile" src="Oni.jpeg">
+                    </div>
+                    <h3>Onica Simina</h3>
+                    <div class="title">Director juridic și conformitate</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img class="profile" src="Matei.jpeg">
+                    </div>
+                    <h3>Lungu Matei</h3>
+                    <div class="title">Director dezvoltare strategică și proiecte</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img class="profile" src="Mironiuc Otnel.jpeg">
+                    </div>
+                    <h3>Mironiuc Otnel</h3>
+                    <div class="title">Director proiecte ESG</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img class="profile" src="Miriam.jpg">
+                    </div>
+                    <h3>Bazgan Miriam</h3>
+                    <div class="title">Analiză financiară și risc</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img class="profile" src="Andrea.jpg">
+                    </div>
+                    <h3>Tofan Andrea</h3>
+                    <div class="title">Director audit și control intern</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img class="profile" src="Moisuc Alexandra.jpeg">
+                    </div>
+                    <h3>Moisuc Alexandra-Ioana</h3>
+                    <div class="title">Consultant business & strategy coach</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img class="profile" src="Iuli.jpg">
+                    </div>
+                    <h3>Lisciuc Iuliana</h3>
+                    <div class="title">Director Departament Financiar</div>
+                </div>
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img class="profile" src="Stef.jpeg">
+                    </div>
+                    <h3>Pasaila Stefania</h3>
+                    <div class="title">Director Resurse Umane</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Începeți conversația</h2>
+            <p>Descoperiți cum vă putem ajuta să vă păstrați și să vă dezvoltați averea.</p>
+            <a href="http://127.0.0.1:5500/Contact%20Us.html#" class="cta-button">Contact Us</a>
+        </div>
+    </section>
+
+        <footer class="social-footer">
+  <div class="social-icons">
+
+<a href="https://x.com/EmberstoneF" class="social-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+    </svg>
+</a>
+
+<a href="https://www.instagram.com/emberstonefinance?igsh=MXBtMDJhM3V6b3Jsdw==" class="social-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+    </svg>
+</a>
+
+<a href="https://www.linkedin.com/in/emberstone-finance-5019ba3aa?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+    </svg>
+</a>
+
+<a href="https://www.facebook.com/share/1DTyYT7fWn/" class="social-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+    </svg>
+</a>
+
+<a href="https://youtube.com/@emberstonefinance?si=WDoKBEq7fD8gbdIe" class="social-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+    </svg>
+</a>
+  </div>
+</footer>
+          <script>
+   const hamburger = document.querySelector('.hamburger');
+   const navMenu = document.querySelector('.nav-menu');
+
+   hamburger.addEventListener('click',()=> {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+   });
+    </script>
+</body>
+</html>
