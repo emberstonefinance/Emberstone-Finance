@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <title>
-Servicii
-  </title>
-      <link rel="icon" type="image/jpg" href="icon.jpg">
+<head>
+  <title>Servicii</title>
+  <link rel="icon" type="image/jpg" href="icon.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    body{
-   padding-top: 80px;
-   background-color: #f4f1ec;
-   line-height: 1.6;
-  }
+    body {
+      padding-top: 80px;
+      background-color: #f4f1ec;
+      line-height: 1.6;
+      font-family: 'Montserrat', sans-serif;
+      background: #dbdbdb;
+      color: #e1e1e1;
+    }
 
-  html, body{
-    min-height: 100%;
-  }
+    html, body {
+      min-height: 100%;
+    }
 
+    /* ==================== HEADER ==================== */
     header {
       background-color: rgb(0, 0, 0);
       width: 100%;
       padding: 1.5rem 1rem;
       justify-content: space-between;
-      display:flex;
+      display: flex;
       flex-direction: row;
       align-items: center;
       position: fixed;
@@ -32,365 +40,1040 @@ Servicii
       height: 95px;
     }
 
-.stacked {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap:0.7rem;
-  order: 3;
-  align-items: flex-end;
-  font-family: 'Times New Roman', Times, serif;
-  padding-bottom: 0.4rem;
-}
+    .stacked {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.7rem;
+      order: 3;
+      align-items: flex-end;
+      font-family: 'Times New Roman', Times, serif;
+      padding-bottom: 0.4rem;
+    }
 
-   .hamburger {
-    display:flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width:35px;
-    height: 20px;
-    background-color: transparent;
-    border:none;
-    cursor: pointer;
-    color: white;
-    padding: 0%;
-    margin: 0%;
-    order: 1;
-  }
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 35px;
+      height: 20px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      color: white;
+      padding: 0%;
+      margin: 0%;
+      order: 1;
+    }
 
-*{
-  margin: 0%;
-  padding: 0%;
-  box-sizing: border-box;
-}
+    .hamburger span {
+      width: 30px;
+      height: 2px;
+      background-color: rgb(255, 255, 255);
+      transition: all 0.5s ease;
+    }
 
-  .hamburger span {
-    width:30px;
-    height:2px;
-    background-color: rgb(255, 255, 255);
-    transition: all 0.5s ease;
-  }
+    .nav-menu {
+      position: fixed;
+      top: 95px;
+      left: -100%;
+      width: 170px;
+      height: 100%;
+      background: black;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      transition: left 0.5s ease;
+      z-index: 999;
+    }
 
-  .nav-menu {
-    position: fixed;
-    top: 95px;
-    left:-100%;
-    width:170px;
-    height:100%;
-    background: black;
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    transition:left 0.5s ease; 
-  }
+    .nav-menu.active {
+      left: 0;
+    }
 
-  .nav-menu.active{
-    left: 0;
-  }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 6px);
+    }
 
-  .hamburger.active span:nth-child(1){
-    transform:rotate(45deg) translate(5px, 6px);
-  }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
 
-   .hamburger.active span:nth-child(2){
-    opacity:0;
-  }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -6px);
+    }
 
-   .hamburger.active span:nth-child(3){
-    transform:rotate(-45deg) translate(5px, -6px);
-  }
+    .nav-menu a {
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      padding: 10px;
+    }
 
-  @media (mid-width:768px){
-    .hamburger{
+    .title {
+      color: white;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 20px;
+      font-weight: bold;
+      align-content: center;
+      margin: 0%;
+      padding: 0%;
+      text-align: center;
+      background-color: transparent;
+      border: none;
+      height: 23px;
+    }
+
+    .subtitle {
+      padding: 0%;
+      margin: 0%;
+      text-align: center;
+      color: white;
+      font-family: 'Times New Roman', Times, serif;
+      font-weight: bold;
+      font-size: 13px;
+      background-color: transparent;
+      border: none;
+      justify-content: center;
+      height: 16px;
+    }
+
+    .logo {
+      order: 2;
+      margin-right: 130px;
+      max-height: 10px;
+      flex: 1;
+      justify-content: center;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo img {
+      height: 50px;
+      width: auto;
+      display: block;
+    }
+
+    /* ==================== CART BUTTON ==================== */
+    .cart-button {
+      position: relative;
+      background: none;
+      border: 1px solid rgba(184, 168, 138, 0.3);
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      order: 4;
+      margin-left: 1rem;
+    }
+
+    .cart-button:hover {
+      background: rgba(184, 168, 138, 0.1);
+      border-color: #b8a88a;
+    }
+
+    .cart-icon {
+      font-size: 1rem;
+    }
+
+    .cart-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #b8a88a;
       display: none;
     }
-  
 
-  .nav-menu{
-    position:static;
-    flex-direction: row;
-    width: auto;
-    height: auto;
-    left:0;
-    transition:right 0.7s ease-in-out; 
-  }
-}
+    @media (min-width: 400px) {
+      .cart-label {
+        display: inline;
+      }
+    }
 
-.nav-menu a{
-  color:white;
-  text-align: center;
-  text-decoration: none;
-  padding: 10px;
-}
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      width: 18px;
+      height: 18px;
+      background: #b8a88a;
+      color: #0d0d0d;
+      font-size: 0.55rem;
+      font-weight: 600;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0);
+      transition: all 0.3s ease;
+    }
 
-.title {
-  color: white;
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 20px;
-  font-weight: bold;
-  align-content: center;
-  margin: 0%;
-  padding: 0%;
-  text-align: center;
-  background-color: transparent;
-  border: none;
-  height: 23px;
-}
+    .cart-count.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
 
-.subtitle{
-  padding: 0%;
-  margin: 0%;
-  text-align: center;
-  color: white;
-  font-family: 'Times New Roman', Times, serif;
-  font-weight: bold;
-  font-size: 13px;
-  background-color: transparent;
-  border: none;
-  justify-content: center;
-  height: 16px;
-}
+    /* ==================== SERVICES SECTION ==================== */
+    .services-section {
+      max-width: 900px;
+      padding: 6rem 2rem;
+      background-color: #e8e6e2;
+      margin: 0 auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
 
-.logo {
-  order: 2;
-  margin-right: 130px;
-  max-height: 10px;
-  flex:1;
-  justify-content: center;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    .services-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
 
-.logo img {
-  height: 50px;
-  width: auto;
-  display: block;
-}
+    .services-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: #1a1a1a;
+      margin-bottom: 1rem;
+      background-color: #e8e6e2;
+    }
 
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
+    .services-header .divider {
+      width: 60px;
+      height: 1px;
+      background: #b8a88a;
+      margin: 0 auto;
+    }
 
-body {
-font-family: 'Montserrat', sans-serif;
-background: #dbdbdb;
-color: #e1e1e1;
-line-height: 1.6;
-}
+    .services-list {
+      border-top: 1px solid #d4d0c7;
+    }
 
-.services-section {
-max-width: 900px;
-padding: 6rem 2rem;
-background-color: #e8e6e2;
-margin: 0 auto;
-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
+    .service-item {
+      border-bottom: 1px solid #d4d0c7;
+    }
 
-.services-header {
-text-align: center;
-margin-bottom: 4rem;
-}
+    .service-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background-color: #e8e6e2;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
 
-.services-header h2 {
-font-family: 'Cormorant Garamond', serif;
-font-size: 3rem;
-font-weight: 400;
-letter-spacing: 0.1em;
-color: #1a1a1a;
-margin-bottom: 1rem;
-background-color: #e8e6e2;
-}
+    .service-header:hover {
+      padding-left: 1rem;
+    }
 
-.services-header .divider {
-width: 60px;
-height: 1px;
-background: #b8a88a;
-margin: 0 auto;
-}
+    .service-header:hover .service-title {
+      color: #003314;
+    }
 
-.services-list {
-border-top: 1px solid #d4d0c7;
-}
+    .service-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.875rem;
+      color: #b8a88a;
+      margin-right: 1rem;
+      min-width: 25px;
+    }
 
-.service-item {
-border-bottom: 1px solid #d4d0c7;
-}
+    .service-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      flex: 1;
+      transition: color 0.3s ease;
+      color: #005522;
+      min-width: 150px;
+    }
 
-.service-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 1.5rem 0;
-cursor: pointer;
-transition: all 0.3s ease;
-background-color: #e8e6e2;
-}
+    .service-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease;
+      color: #005522;
+      margin-left: auto;
+      margin-right: 1rem;
+      white-space: nowrap;
+    }
 
-.service-header:hover {
-padding-left: 1rem;
-}
+    .service-toggle {
+      font-size: 1.5rem;
+      color: #b8a88a;
+      transition: transform 0.3s ease;
+      font-weight: 300;
+    }
 
-.service-header:hover .service-title {
-color: #003314;
-}
+    .service-item.active .service-toggle {
+      transform: rotate(45deg);
+    }
 
-.service-number {
-font-family: 'Cormorant Garamond', serif;
-font-size: 0.875rem;
-color: #b8a88a;
-margin-right: 2rem;
-min-width: 30px;
-}
+    .service-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.4s ease;
+    }
 
-.service-title {
-font-family: 'Cormorant Garamond', serif;
-font-size: 1.25rem;
-font-weight: 500;
-letter-spacing: 0.05em;
-flex: 1;
-transition: color 0.3s ease;
-color: #005522;
-}
+    .service-item.active .service-content {
+      grid-template-rows: 1fr;
+    }
 
-.service-toggle {
-font-size: 1.5rem;
-color: #b8a88a;
-transition: transform 0.3s ease;
-font-weight: 300;
-}
+    .service-content-inner {
+      overflow: hidden;
+      color: #3d3d3d;
+    }
 
-.service-item.active .service-toggle {
-transform: rotate(45deg);
-}
+    .service-content-text {
+      padding: 0 2rem 2rem 2.5rem;
+    }
 
-.service-content {
-display: grid;
-grid-template-rows: 0fr;
-transition: grid-template-rows 0.4s ease;
-}
+    .service-content-text p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: #3d3d3d;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
 
-.service-item.active .service-content {
-grid-template-rows: 1fr;
-}
+    .service-content-text .learn-more {
+      font-size: 0.75rem;
+      letter-spacing: 0.15rem;
+      text-transform: uppercase;
+      color: #8b7355;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s ease;
+    }
 
-.service-content-inner {
-overflow: hidden;
-color: #3d3d3d;
-}
+    .service-content-text .learn-more:hover {
+      border-bottom-color: #8b7355;
+    }
 
-.service-content-text {
-padding: 0 2rem 2rem 3.5rem;
-}
+    .category-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      padding: 2rem 0 1rem;
+      margin-top: 1rem;
+    }
 
-.service-content-text p {
-font-size: 0.9rem;
-font-weight: 300;
-color: #3d3d3d;
-line-height: 1.8;
-margin-bottom: 1rem;
-}
+    /* Add to Cart Button */
+    .add-to-cart-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: transparent;
+      border: 1px solid #005522;
+      color: #005522;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+      margin-left: 15 rem;
+    }
 
-.service-content-text .learn-more {
-font-size: 0.75rem;
-letter-spacing: 0.15rem;
-text-transform: uppercase;
-color: #8b7355;
-text-decoration: none;
-border-bottom: 1px solid transparent;
-transition: border-color 0.3s ease;
-}
+    .add-to-cart-btn:hover {
+      background: #005522;
+      color: #e8e6e2;
+    }
 
-.service-content-text .learn-more:hover {
-border-bottom-color: #8b7355;
-}
+    .add-to-cart-btn.added {
+      background: rgba(0, 85, 34, 0.15);
+      border-color: #005522;
+    }
 
-.category-label {
-font-size: 0.7rem;
-letter-spacing: 0.2em;
-text-transform: uppercase;
-color: #999;
-padding: 2rem 0 1rem;
-margin-top: 1rem;
-}
+    .empty-space {
+      height: 50px;
+    }
 
-.learn-more{
-    text-decoration: none;
-    color: rgb(77, 76, 76);
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
-}
+    /* ==================== FOOTER ==================== */
+    .social-footer {
+      background: #111;
+      padding: 2rem;
+    }
 
-.empty-space{
-    height: 50px;
-}
+    .social-icons {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 2.7rem;
+    }
 
-.social-footer{
-  background: #111;
-  padding: 2rem;
-}
+    .social-icon {
+      color: #333;
+      transition: all 0.3s ease;
+    }
 
-.social-icons{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 2.7rem;
-}
+    .social-icon svg {
+      width: 22px;
+      height: 22px;
+      transition: all 0.3s ease;
+    }
 
-.social-icon {
-  color: #333;
-  transition: all 0.3s ease;
-}
+    .social-icons:hover .social-icon {
+      opacity: 0.3;
+    }
 
-.social-icon svg{
-  width: 22px;
-  height: 22px;
-  transition: all 0.3s ease;
-}
+    .social-icons:hover .social-icon:hover {
+      opacity: 1;
+      color: #ffffff;
+      transform: scale(1.2);
+    }
 
-.social-icons:hover .social-icon{
-  opacity:0.3;
-}
+    /* ==================== MODAL OVERLAY ==================== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 1100;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
 
-.social-icons:hover .social-icon:hover {
-  opacity: 1;
-  color: #ffffff;
-  transform: scale(1.2);
-}
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
 
-.service-price{
-    margin-left: 12%;
-    font-family: 'Cormorant Garamond', serif;
-font-size: 1.25rem;
-font-weight: 500;
-letter-spacing: 0.05em;
-flex: 1;
-transition: color 0.3s ease;
-color: #005522;
-}
+    /* ==================== CART MODAL ==================== */
+    .cart-modal {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      max-width: 420px;
+      height: 100vh;
+      background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+      border-left: 1px solid rgba(184, 168, 138, 0.2);
+      z-index: 1101;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.4s ease;
+    }
 
+    .cart-modal.active {
+      right: 0;
+    }
+
+    .cart-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid rgba(184, 168, 138, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: #fff;
+    }
+
+    .close-cart {
+      background: none;
+      border: none;
+      color: #666;
+      font-size: 1.75rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      line-height: 1;
+      padding: 0.5rem;
+    }
+
+    .close-cart:hover {
+      color: #b8a88a;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+    }
+
+    .cart-items::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .cart-items::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .cart-items::-webkit-scrollbar-thumb {
+      background: rgba(184, 168, 138, 0.3);
+      border-radius: 2px;
+    }
+
+    .cart-empty {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    .cart-empty-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.3;
+    }
+
+    .cart-empty-text {
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(184, 168, 138, 0.1);
+      margin-bottom: 0.75rem;
+      position: relative;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .cart-item-icon {
+      font-size: 1.25rem;
+      width: 35px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .cart-item-details {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cart-item-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: #fff;
+      margin-bottom: 0.25rem;
+      line-height: 1.3;
+    }
+
+    .cart-item-type {
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #b8a88a;
+      margin-bottom: 0.5rem;
+    }
+
+    .cart-item-price {
+      font-size: 0.8rem;
+      color: #b8a88a;
+    }
+
+    .cart-item-quantity {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .qty-btn {
+      width: 26px;
+      height: 26px;
+      background: transparent;
+      border: 1px solid rgba(184, 168, 138, 0.3);
+      color: #b8a88a;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qty-btn:hover {
+      background: rgba(184, 168, 138, 0.2);
+    }
+
+    .qty-value {
+      font-size: 0.8rem;
+      color: #fff;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .remove-item {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: none;
+      border: none;
+      color: #555;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      padding: 0.25rem;
+      line-height: 1;
+    }
+
+    .remove-item:hover {
+      color: #e53935;
+    }
+
+    .cart-footer {
+      padding: 1.25rem 1.5rem;
+      border-top: 1px solid rgba(184, 168, 138, 0.1);
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .cart-subtotal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtotal-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    .subtotal-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.75rem;
+      margin-top: 0.5rem;
+      border-top: 1px solid rgba(184, 168, 138, 0.1);
+      margin-bottom: 1.25rem;
+    }
+
+    .total-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #b8a88a;
+    }
+
+    .total-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: #b8a88a;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      padding: 1.1rem;
+      background: #b8a88a;
+      border: none;
+      color: #0d0d0d;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .checkout-btn:hover {
+      background: #c9b99b;
+    }
+
+    .checkout-btn:disabled {
+      background: #444;
+      color: #888;
+      cursor: not-allowed;
+    }
+
+    /* ==================== CHECKOUT MODAL ==================== */
+    .checkout-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      width: 90%;
+      max-width: 480px;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+      border: 1px solid rgba(184, 168, 138, 0.2);
+      z-index: 1102;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .checkout-modal::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .checkout-modal::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .checkout-modal::-webkit-scrollbar-thumb {
+      background: rgba(184, 168, 138, 0.3);
+      border-radius: 2px;
+    }
+
+    .checkout-modal.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .checkout-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid rgba(184, 168, 138, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .checkout-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: #fff;
+    }
+
+    .checkout-content {
+      padding: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #b8a88a;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-input, .form-select {
+      width: 100%;
+      padding: 0.9rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(184, 168, 138, 0.2);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-input:focus, .form-select:focus {
+      outline: none;
+      border-color: #b8a88a;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .form-input::placeholder {
+      color: #555;
+    }
+
+    .form-select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b8a88a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+    }
+
+    .form-select option {
+      background: #1a1a1a;
+      color: #fff;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .checkout-footer {
+      padding: 1.25rem 1.5rem 1.5rem;
+      border-top: 1px solid rgba(184, 168, 138, 0.1);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1.1rem;
+      background: #b8a88a;
+      border: none;
+      color: #0d0d0d;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background: #c9b99b;
+    }
+
+    /* ==================== CONFIRMATION MODAL ==================== */
+    .confirmation-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      width: 90%;
+      max-width: 420px;
+      background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+      border: 1px solid rgba(184, 168, 138, 0.3);
+      z-index: 1103;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .confirmation-modal.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .confirmation-icon {
+      width: 70px;
+      height: 70px;
+      border: 2px solid #b8a88a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1.5rem;
+      color: #b8a88a;
+      animation: scaleIn 0.5s ease;
+    }
+
+    @keyframes scaleIn {
+      from {
+        transform: scale(0);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .confirmation-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .confirmation-message {
+      font-size: 0.8rem;
+      color: #888;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .confirmation-details {
+      background: rgba(184, 168, 138, 0.1);
+      border: 1px solid rgba(184, 168, 138, 0.2);
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .confirmation-detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .confirmation-detail-row:last-child {
+      border-bottom: none;
+    }
+
+    .detail-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    .detail-value {
+      font-size: 0.75rem;
+      color: #b8a88a;
+      text-align: right;
+    }
+
+    .scheduled-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    .close-confirmation {
+      padding: 0.9rem 2rem;
+      background: transparent;
+      border: 1px solid #b8a88a;
+      color: #b8a88a;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .close-confirmation:hover {
+      background: #b8a88a;
+      color: #0d0d0d;
+    }
+
+    /* ==================== TOAST NOTIFICATION ==================== */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #1a1a1a;
+      border: 1px solid #b8a88a;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      z-index: 1200;
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    .toast-icon {
+      color: #b8a88a;
+    }
+
+    .toast-message {
+      font-size: 0.75rem;
+      color: #fff;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .service-header {
+        padding: 1.25rem 0;
+      }
+
+      .service-title {
+        font-size: 1.1rem;
+      }
+
+      .service-price {
+        font-size: 0.9rem;
+        width: 100%;
+        order: 3;
+        margin-left: 2rem;
+        margin-top: 0.25rem;
+      }
+
+      .service-toggle {
+        order: 2;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .services-section {
+        padding: 4rem 1rem;
+      }
+    }
+
+    @media (mid-width: 768px) {
+      .hamburger {
+        display: none;
+      }
+
+      .nav-menu {
+        position: static;
+        flex-direction: row;
+        width: auto;
+        height: auto;
+        left: 0;
+        padding: 0;
+        background: transparent;
+      }
+    }
   </style>
-  <body>
-   <header>
-    <div class="stacked">
-    <div class="title">Emberstone Finance</div>
-    <div class="subtitle">Outlive your Money</div>
-    </div>
-    <div class="logo">
-        <img src="Logo.jpg" alt="Logo">
-    </div>
+</head>
+<body>
+  <header>
     <button class="hamburger" aria-label="Menu">
       <span></span>
       <span></span>
       <span></span>
     </button>
-    
+
+    <div class="logo">
+      <img src="Logo.jpg" alt="Logo">
+    </div>
+<!--
+    <div class="stacked">
+      <div class="title">Emberstone Finance</div>
+      <div class="subtitle">Outlive your Money</div>
+    </div> -->
+
+    <!-- CART BUTTON -->
+    <button class="cart-button" onclick="toggleCart()">
+      <span class="cart-icon">🛒</span>
+      <span class="cart-label">Coș</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+
     <nav class="nav-menu">
       <a href="index.html">Home</a>
       <a href="Servicii.html">Services</a>
@@ -400,464 +1083,900 @@ color: #005522;
       <a href="Posturi%20de%20munca.html">Posturi de munca</a>
       <a href="Contact%20Us.html#">Contact Us</a>
     </nav>
-   </header>
-   <div class="empty-space"><span></span></div>
-   <section class="services-section">
-        <div class="services-header">
-            <h2>Serviciile Noastre</h2>
-            <div class="divider"></div>
-        </div>
+  </header>
+
+  <div class="empty-space"><span></span></div>
+
+  <section class="services-section">
+    <div class="services-header">
+      <h2>Serviciile Noastre</h2>
+      <div class="divider"></div>
+    </div>
 
     <div class="services-list">
-        <p class="category-label">Wealth Management</p>
+      <p class="category-label">Wealth Management</p>
 
-        <div class="service-item">
-            <div class="service-header" >
-                <span class="service-number">01</span>
-                <span class="service-title">Plan buget personalizat</span>
-                <span class="service-price">70-100 EUR/ Sedinta</span>
-                <span class="service-toggle">+</span>
-            </div>
-            <div class="service-content">
-                <div class="service-content-inner">
-                <p>Analizăm structura veniturilor și a cheltuielilor tale pentru a identifica oportunități de optimizare și a contura un plan financiar coerent, aliniat obiectivelor tale. Vei primi un raport detaliat, recomandări aplicate și o sesiune de consultanță de 60 de minute, dedicată clarificărilor și ajustărilor necesare.</p> 
-                <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>  
-               </div>        
-            </div>
+      <div class="service-item" data-id="s1" data-name="Plan buget personalizat" data-price="85" data-icon="📊">
+        <div class="service-header">
+          <span class="service-number">01</span>
+          <span class="service-title">Plan buget personalizat</span>
+          <span class="service-price">70-100 EUR/ Sedinta</span>
+          <span class="service-toggle">+</span>
         </div>
-
-        <div class="service-item">
-            <div class="service-header">
-                <span class="service-number">02</span>
-                <span class="service-title">Planificare financiară pe termen lung</span>
-                <span class="service-price">150-250 EUR/ Pachet</span>
-                <span class="service-toggle">+</span>
-            </div>
-            <div class="service-content">
-                <div class="service-content-inner">
-                <p>Îți oferim suportul necesar pentru a construi o strategie financiară temeinică, care integrează economisirea, investițiile și planificarea pensiei. Printr-o evaluare riguroasă a situației tale financiare, definim obiective clare și elaborăm un plan sustenabil, orientat spre stabilitate și creștere pe termen lung.</p>
-                <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
-              </div>
-            </div>
-        </div>
-
-        <div class="service-item">
-            <div class="service-header">
-                <span class="service-number">03</span>
-                <span class="service-title">Consultanță pentru creditare </span>
-                <span class="service-price">100-150 EUR/ Dosar</span>
-                <span class="service-toggle">+</span>
-            </div>
-            <div class="service-content">
-                <div class="service-content-inner">
-                <p>Te sprijinim în definirea și implementarea unei strategii financiare coerente, care îmbină economisirea, investițiile și planificarea pensiei. Printr-o analiză atentă a situației tale patrimoniale, stabilim obiective realiste și construim un plan durabil, menit să asigure stabilitate și creștere constantă pe termen lung.</p>
-                <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
-              </div>
-            </div>
-        </div>
-
-        <div class="service-item">
-            <div class="service-header">
-                <span class="service-number">04</span>
-                <span class="service-title">Optimizarea datoriilor </span>
-                <span class="service-price">100-180 EUR/ Proiect</span>
-                <span class="service-toggle">+</span>
-            </div>
         <div class="service-content">
-            <div class="service-content-inner">
-            <p>Evaluăm structura creditelor tale actuale și identificăm soluții menite să reducă costurile și să eficientizeze rambursările. Te sprijinim în restructurarea datoriilor, negocierea unor condiții mai avantajoase și restabilirea unui control solid asupra situației tale financiare.</p>
-            <p>Pret: </p>
-            <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Analizăm structura veniturilor și a cheltuielilor tale pentru a identifica oportunități de optimizare și a contura un plan financiar coerent, aliniat obiectivelor tale. Vei primi un raport detaliat, recomandări aplicate și o sesiune de consultanță de 60 de minute, dedicată clarificărilor și ajustărilor necesare.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s1')">Adaugă în coș</button>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="service-item">
-            <div class="service-header">
-                <span class="service-number">05</span>
-                <span class="service-title">Consultanță pentru investiții </span>
-                <span class="service-price">100-200 EUR/ Sedinta</span>
-                <span class="service-toggle">+</span>
-            </div>
-        <div class="service-content"> 
-            <div class="service-content-inner">
-            <p>Îți punem la dispoziție strategii prudente și diversificate pentru consolidarea capitalului. Prin evaluarea atentă a profilului tău de risc, selectăm instrumente adecvate și te ghidăm în construirea unui portofoliu echilibrat, orientat către performanță și continuitate pe termen lung.</p>
-            <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
-            </div>
-          </div>
+      <div class="service-item" data-id="s2" data-name="Planificare financiară pe termen lung" data-price="200" data-icon="📈">
+        <div class="service-header">
+          <span class="service-number">02</span>
+          <span class="service-title">Planificare financiară pe termen lung</span>
+          <span class="service-price">150-250 EUR/ Pachet</span>
+          <span class="service-toggle">+</span>
         </div>
-
-                <div class="service-item">
-            <div class="service-header">
-                <span class="service-number">06</span>
-                <span class="service-title">Managementul riscului</span>
-                <span class="service-price">220-350 EUR/</span>
-                <span class="service-toggle">+</span>
-            </div>
         <div class="service-content">
-            <div class="service-content-inner">
-            <p>Identificăm și gestionăm riscurile financiare și operaționale pentru a proteja afacerea ta. Oferim strategii precise și măsuri preventive menite să asigure stabilitate și continuitate durabilă pe termen lung.</p>
-            <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Îți oferim suportul necesar pentru a construi o strategie financiară temeinică, care integrează economisirea, investițiile și planificarea pensiei. Printr-o evaluare riguroasă a situației tale financiare, definim obiective clare și elaborăm un plan sustenabil, orientat spre stabilitate și creștere pe termen lung.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s2')">Adaugă în coș</button>
             </div>
           </div>
         </div>
+      </div>
 
-            <div class="service-item">
-            <div class="service-header" >
-                <span class="service-number">07</span>
-                <span class="service-title">Wealth management premium</span>
-                <span class="service-price">300-1000 EUR/ Luna</span>
-                <span class="service-toggle">+</span>
-            </div>
-            <div class="service-content">
-                <div class="service-content-inner">
-                <p>Oferim administrare profesionistă a portofoliilor și soluții dedicate pentru investiții sofisticate. Ne concentrăm pe optimizarea performanței, diversificarea atentă și protejarea capitalului, cu o perspectivă solidă pe termen lung.</p> 
-                <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>  
-                </div>        
-            </div>
+      <div class="service-item" data-id="s3" data-name="Consultanță pentru creditare" data-price="125" data-icon="💳">
+        <div class="service-header">
+          <span class="service-number">03</span>
+          <span class="service-title">Consultanță pentru creditare</span>
+          <span class="service-price">100-150 EUR/ Dosar</span>
+          <span class="service-toggle">+</span>
         </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Te sprijinim în definirea și implementarea unei strategii financiare coerente, care îmbină economisirea, investițiile și planificarea pensiei. Printr-o analiză atentă a situației tale patrimoniale, stabilim obiective realiste și construim un plan durabil, menit să asigure stabilitate și creștere constantă pe termen lung.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s3')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item" data-id="s4" data-name="Optimizarea datoriilor" data-price="140" data-icon="🔄">
+        <div class="service-header">
+          <span class="service-number">04</span>
+          <span class="service-title">Optimizarea datoriilor</span>
+          <span class="service-price">100-180 EUR/ Proiect</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Evaluăm structura creditelor tale actuale și identificăm soluții menite să reducă costurile și să eficientizeze rambursările. Te sprijinim în restructurarea datoriilor, negocierea unor condiții mai avantajoase și restabilirea unui control solid asupra situației tale financiare.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s4')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item" data-id="s5" data-name="Consultanță pentru investiții" data-price="150" data-icon="💹">
+        <div class="service-header">
+          <span class="service-number">05</span>
+          <span class="service-title">Consultanță pentru investiții</span>
+          <span class="service-price">100-200 EUR/ Sedinta</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Îți punem la dispoziție strategii prudente și diversificate pentru consolidarea capitalului. Prin evaluarea atentă a profilului tău de risc, selectăm instrumente adecvate și te ghidăm în construirea unui portofoliu echilibrat, orientat către performanță și continuitate pe termen lung.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s5')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item" data-id="s6" data-name="Managementul riscului" data-price="285" data-icon="🛡️">
+        <div class="service-header">
+          <span class="service-number">06</span>
+          <span class="service-title">Managementul riscului</span>
+          <span class="service-price">220-350 EUR/</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Identificăm și gestionăm riscurile financiare și operaționale pentru a proteja afacerea ta. Oferim strategii precise și măsuri preventive menite să asigure stabilitate și continuitate durabilă pe termen lung.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s6')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item" data-id="s7" data-name="Wealth management premium" data-price="650" data-icon="💎">
+        <div class="service-header">
+          <span class="service-number">07</span>
+          <span class="service-title">Wealth management premium</span>
+          <span class="service-price">300-1000 EUR/ Luna</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Oferim administrare profesionistă a portofoliilor și soluții dedicate pentru investiții sofisticate. Ne concentrăm pe optimizarea performanței, diversificarea atentă și protejarea capitalului, cu o perspectivă solidă pe termen lung.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s7')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="category-label">Consultanata & Training</p>
+
+      <div class="service-item" data-id="s8" data-name="Coaching financiar individual" data-price="90" data-icon="🎯">
+        <div class="service-header">
+          <span class="service-number">08</span>
+          <span class="service-title">Coaching financiar individual</span>
+          <span class="service-price">60-120 EUR/ Sedinta</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Sesiuni individuale dedicate formării unei mentalități financiare solide. Te sprijinim în înțelegerea relației tale cu banii, clarificarea obiectivelor personale și cultivarea unor obiceiuri care susțin echilibrul și prosperitatea financiară pe termen lung.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s8')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item" data-id="s9" data-name="Consultanță Juridico-Financiară" data-price="360" data-icon="⚖️">
+        <div class="service-header">
+          <span class="service-number">09</span>
+          <span class="service-title">Consultanță Juridico-Financiară pentru structuri de investiții și capital</span>
+          <span class="service-price">270-450 EUR/ Ora</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Oferim suport integrat în structurarea și optimizarea capitalului, îmbinând expertiza financiară și juridică pentru a asigura conformitatea, eficiența fiscală și protecția durabilă a investițiilor tale.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s9')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item" data-id="s10" data-name="Consultanță contabilă pentru IMM-uri" data-price="240" data-icon="📒">
+        <div class="service-header">
+          <span class="service-number">10</span>
+          <span class="service-title">Consultanță contabilă pentru IMM-uri</span>
+          <span class="service-price">180-300 EUR/ Luna</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Asigurăm o gestiune contabilă riguroasă și conformă, adaptată specificului afacerii tale. Oferim soluții clare pentru optimizarea fiscală, controlul costurilor și fundamentarea deciziilor financiare strategice.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s10')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item" data-id="s11" data-name="Monitorizare financiară continuă" data-price="107" data-icon="📡">
+        <div class="service-header">
+          <span class="service-number">11</span>
+          <span class="service-title">Monitorizare financiară continuă</span>
+          <span class="service-price">65-150 EUR/ Luna</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Monitorizăm în mod constant sănătatea financiară și evoluția investițiilor tale. Furnizăm rapoarte clare și recomandări proactive, menite să prevină orice dezechilibru și să asigure păstrarea obiectivelor tale pe traiectoria planificată.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s11')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item" data-id="s12" data-name="Training financiar pentru angajați" data-price="50" data-icon="👥">
+        <div class="service-header">
+          <span class="service-number">12</span>
+          <span class="service-title">Training financiar pentru angajați</span>
+          <span class="service-price">50 EUR/ Persoana</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Organizăm workshop-uri practice menite să dezvolte competențele financiare ale echipei tale. Participanții dobândesc abilități de gestionare eficientă a resurselor, iau decizii informate și contribuie la consolidarea sănătății financiare a organizației.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s12')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item" data-id="s13" data-name="Consultanță ESG" data-price="325" data-icon="🌱">
+        <div class="service-header">
+          <span class="service-number">13</span>
+          <span class="service-title">Consultanță ESG</span>
+          <span class="service-price">250-400 EUR/ Proiect</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Te sprijinim în elaborarea de planuri sustenabile și în întocmirea de rapoarte ESG clare și conforme. Asigurăm integrarea criteriilor de mediu, sociale și de guvernanță în strategia și operațiunile tale, promovând performanță responsabilă și durabilă pe termen lung.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s13')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item" data-id="s14" data-name="Consultanță pentru fonduri Europene" data-price="500" data-icon="🇪🇺">
+        <div class="service-header">
+          <span class="service-number">14</span>
+          <span class="service-title">Consultanță pentru fonduri Europene</span>
+          <span class="service-price">400-600 EUR/ Proiect</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Te sprijinim în identificarea și accesarea granturilor adecvate afacerii tale. Oferim asistență completă, de la evaluarea eligibilității și pregătirea documentației, până la obținerea finanțării și implementarea proiectului.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s14')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="category-label">Planificarea viitorului</p>
+
+      <div class="service-item" data-id="s15" data-name="Planificare succesiune și moștenire" data-price="235" data-icon="🏛️">
+        <div class="service-header">
+          <span class="service-number">15</span>
+          <span class="service-title">Planificare succesiune și moștenire</span>
+          <span class="service-price">170-300 EUR/ Pachet</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Te sprijinim în transferul patrimoniului, asigurând continuitatea și protecția activelor tale. Oferim soluții personalizate și transparente pentru succesiune eficientă, respectând cadrul legal și fiscal.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s15')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item" data-id="s16" data-name="Due Diligence financiar" data-price="585" data-icon="🔍">
+        <div class="service-header">
+          <span class="service-number">16</span>
+          <span class="service-title">Due Diligence financiar</span>
+          <span class="service-price">470-700 EUR/ Raport</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Elaborăm analize detaliate pentru fuziuni și achiziții, evaluând cu atenție riscurile și oportunitățile financiare. Furnizăm rapoarte clare și precise, menite să susțină decizii strategice sigure și fundamentate.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s16')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item" data-id="s17" data-name="Asistență pentru start-up-uri" data-price="350" data-icon="🚀">
+        <div class="service-header">
+          <span class="service-number">17</span>
+          <span class="service-title">Asistență pentru start-up-uri</span>
+          <span class="service-price">250-450 EUR/ Proiect</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Oferim sprijin integrat, de la elaborarea planului de afaceri până la structurarea contabilă. Ghidăm cu precizie lansarea și dezvoltarea afacerii, asigurând o fundație solidă din punct de vedere financiar și administrativ.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s17')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item" data-id="s18" data-name="Planificare fiscală internațională" data-price="800" data-icon="🌐">
+        <div class="service-header">
+          <span class="service-number">18</span>
+          <span class="service-title">Planificare fiscală internațională</span>
+          <span class="service-price">800 EUR/ Proiect</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Oferim consultanță dedicată companiilor cu activitate internațională, optimizând fiscalitatea și asigurând conformitatea transfrontalieră. Furnizăm strategii precise, menite să sporească eficiența și să minimizeze riscurile fiscale.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s18')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="category-label">Prudenta</p>
+
+      <div class="service-item" data-id="s19" data-name="Audit financiar intern" data-price="425" data-icon="📋">
+        <div class="service-header">
+          <span class="service-number">19</span>
+          <span class="service-title">Audit financiar intern</span>
+          <span class="service-price">350-500 EUR/ Raport</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Analizăm riscurile și procesele financiare pentru a garanta conformitatea și eficiența operațională. Furnizăm rapoarte clare și recomandări aplicate, menite să optimizeze funcționarea afacerii și să protejeze resursele companiei.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s19')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item" data-id="s20" data-name="Financial forensics" data-price="2500" data-icon="🔬">
+        <div class="service-header">
+          <span class="service-number">20</span>
+          <span class="service-title">Financial forensics</span>
+          <span class="service-price">2500 EUR/ Investigatie</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Derulăm investigații financiare și acțiuni antifraudă pentru a identifica nereguli și a proteja activele companiei. Furnizăm rapoarte precise și recomandări aplicate, menite să prevină și să gestioneze eficient riscurile financiare.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s20')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item" data-id="s21" data-name="Proiecție financiară și simulare de scenarii" data-price="1500" data-icon="📊">
+        <div class="service-header">
+          <span class="service-number">21</span>
+          <span class="service-title">Proiecție financiară și simulare de scenarii</span>
+          <span class="service-price">1500 EUR/ Raport</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Oferim analize și simulări pentru diverse scenarii financiare, sprijinindu-te să anticipezi rezultate și să iei decizii strategice bine fundamentate.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s21')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item" data-id="s22" data-name="Suport digital & securitate financiară" data-price="285" data-icon="🔐">
+        <div class="service-header">
+          <span class="service-number">22</span>
+          <span class="service-title">Suport digital & securitate financiară</span>
+          <span class="service-price">170-400 EUR/ Proiect</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Implementăm soluții digitale menite să asigure gestionarea eficientă a finanțelor și protecția datelor. Garantăm securitate, conformitate și eficiență în toate operațiunile tale financiare.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s22')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item" data-id="s23" data-name="Audit intern și evaluare a controlului financiar" data-price="1400" data-icon="✅">
+        <div class="service-header">
+          <span class="service-number">23</span>
+          <span class="service-title">Audit intern și evaluare a controlului financiar</span>
+          <span class="service-price">1000-1800 EUR/ Sesiune</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Analizăm procesele și controalele financiare interne pentru a identifica riscuri și a optimiza performanța. Furnizăm rapoarte clare și recomandări aplicate, menite să consolideze transparența și eficiența financiară.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s23')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item" data-id="s24" data-name="Analiză și audit de gestiune a stocurilor" data-price="950" data-icon="📦">
+        <div class="service-header">
+          <span class="service-number">24</span>
+          <span class="service-title">Analiză și audit de gestiune a stocurilor</span>
+          <span class="service-price">700-1200 EUR/ Audit</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Analizăm gestionarea stocurilor pentru a identifica ineficiențele și a optimiza procesele operaționale. Furnizăm recomandări precise, menite să reducă costurile și să îmbunătățească controlul inventarului.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s24')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-item" data-id="s25" data-name="Servicii de contabilitate completă și raportare fiscală" data-price="950" data-icon="📑">
+        <div class="service-header">
+          <span class="service-number">25</span>
+          <span class="service-title">Servicii de contabilitate completă și raportare fiscală</span>
+          <span class="service-price">700-1200 EUR/ Luna</span>
+          <span class="service-toggle">+</span>
+        </div>
+        <div class="service-content">
+          <div class="service-content-inner">
+            <div class="service-content-text">
+              <p>Oferim gestionarea completă a contabilității și raportarea fiscală conformă. Garantăm transparență, acuratețe și suport pentru luarea deciziilor financiare strategice.</p>
+              <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
+              <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('s25')">Adaugă în coș</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </section>
 
+  <div class="empty-space"><span></span></div>
 
-        <p class="category-label">Consultanata & Training</p>
+  <!-- MODAL OVERLAY -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeAllModals()"></div>
 
-        <div class="service-item">
-            <div class="service-header" >
-                <span class="service-number">08</span>
-                <span class="service-title">Coaching financiar individual </span>
-                <span class="service-price">60-120 EUR/ Sedinta</span>
-                <span class="service-toggle">+</span>
-            </div>
-            <div class="service-content">
-                <div class="service-content-inner">
-                <p>Sesiuni individuale dedicate formării unei mentalități financiare solide. Te sprijinim în înțelegerea relației tale cu banii, clarificarea obiectivelor personale și cultivarea unor obiceiuri care susțin echilibrul și prosperitatea financiară pe termen lung.</p> 
-                <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>  
-              </div>        
-            </div>
-        </div>
-
-            <div class="service-item">
-            <div class="service-header" >
-                <span class="service-number">09</span>
-                <span class="service-title">Consultanță Juridico-Financiară pentru structuri de investiții și capital </span>
-                <span class="service-price">270-450 EUR/ Ora</span>
-                <span class="service-toggle">+</span>
-            </div>
-            <div class="service-content">
-                <div class="service-content-inner">
-                <p>Oferim suport integrat în structurarea și optimizarea capitalului, îmbinând expertiza financiară și juridică pentru a asigura conformitatea, eficiența fiscală și protecția durabilă a investițiilor tale.</p> 
-                <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>  
-              </div>        
-            </div>
-        </div>
-
-        <div class="service-item">
-            <div class="service-header">
-                <span class="service-number">10</span>
-                <span class="service-title">Consultanță contabilă pentru IMM-uri</span>
-                <span class="service-price">180-300 EUR/ Luna</span>
-                <span class="service-toggle">+</span>
-            </div>
-            <div class="service-content">
-                <div class="service-content-inner">
-                <p>Asigurăm o gestiune contabilă riguroasă și conformă, adaptată specificului afacerii tale. Oferim soluții clare pentru optimizarea fiscală, controlul costurilor și fundamentarea deciziilor financiare strategice.</p>
-                <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
-              </div>
-            </div>
-        </div>
-
-        <div class="service-item">
-            <div class="service-header">
-                <span class="service-number">11</span>
-                <span class="service-title">Monitorizare financiară continuă</span>
-                <span class="service-price">65-150 EUR/ Luna</span>
-                <span class="service-toggle">+</span>
-            </div>
-            <div class="service-content">
-                <div class="service-content-inner">
-                <p>Monitorizăm în mod constant sănătatea financiară și evoluția investițiilor tale. Furnizăm rapoarte clare și recomandări proactive, menite să prevină orice dezechilibru și să asigure păstrarea obiectivelor tale pe traiectoria planificată.</p>
-                <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
-              </div>
-            </div>
-        </div>
-
-        <div class="service-item">
-            <div class="service-header">
-                <span class="service-number">12</span>
-                <span class="service-title">Training financiar pentru angajați</span>
-                <span class="service-price">50 EUR/ Persoana</span>
-                <span class="service-toggle">+</span>
-            </div>
-        <div class="service-content">
-            <div class="service-content-inner">
-            <p>Organizăm workshop-uri practice menite să dezvolte competențele financiare ale echipei tale. Participanții dobândesc abilități de gestionare eficientă a resurselor, iau decizii informate și contribuie la consolidarea sănătății financiare a organizației.</p>
-            <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="service-item">
-            <div class="service-header">
-                <span class="service-number">13</span>
-                <span class="service-title">Consultanță ESG</span>
-                <span class="service-price">250-400 EUR/ Proiect</span>
-                <span class="service-toggle">+</span>
-            </div>
-        <div class="service-content">
-            <div class="service-content-inner">
-            <p>Te sprijinim în elaborarea de planuri sustenabile și în întocmirea de rapoarte ESG clare și conforme. Asigurăm integrarea criteriilor de mediu, sociale și de guvernanță în strategia și operațiunile tale, promovând performanță responsabilă și durabilă pe termen lung.</p>
-            <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
-            </div>
-          </div>
-        </div>
-
-            <div class="service-item">
-            <div class="service-header">
-                <span class="service-number">14</span>
-                <span class="service-title">Consultanță pentru fonduri Europene</span>
-                <span class="service-price">400-600 EUR/ Proiect</span>
-                <span class="service-toggle">+</span>
-            </div>
-        <div class="service-content">
-            <div class="service-content-inner">
-            <p>Te sprijinim în identificarea și accesarea granturilor adecvate afacerii tale. Oferim asistență completă, de la evaluarea eligibilității și pregătirea documentației, până la obținerea finanțării și implementarea proiectului.</p>
-            <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
-          </div>
-        </div>
+  <!-- CART MODAL -->
+  <div class="cart-modal" id="cartModal">
+    <div class="cart-header">
+      <h3 class="cart-title">Coșul tău</h3>
+      <button class="close-cart" onclick="toggleCart()">×</button>
     </div>
-
-
-        <p class="category-label">Planificarea viitorului</p>
-
-        <div class="service-item">
-            <div class="service-header" >
-                <span class="service-number">15</span>
-                <span class="service-title">Planificare succesiune și moștenire</span>
-                <span class="service-price">170-300 EUR/ Pachet</span>
-                <span class="service-toggle">+</span>
-            </div>
-            <div class="service-content">
-                <div class="service-content-inner">
-                <p>Te sprijinim în transferul patrimoniului, asigurând continuitatea și protecția activelor tale. Oferim soluții personalizate și transparente pentru succesiune eficientă, respectând cadrul legal și fiscal.</p> 
-                <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
-              </div>          
-            </div>
-        </div>
-
-        <div class="service-item">
-            <div class="service-header">
-                <span class="service-number">16</span>
-                <span class="service-title">Due Diligence financiar</span>
-                <span class="service-price">470-700 EUR/ Raport</span>
-                <span class="service-toggle">+</span>
-            </div>
-            <div class="service-content">
-                <div class="service-content-inner">
-                <p>Elaborăm analize detaliate pentru fuziuni și achiziții, evaluând cu atenție riscurile și oportunitățile financiare. Furnizăm rapoarte clare și precise, menite să susțină decizii strategice sigure și fundamentate.</p>
-                <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
-              </div>
-            </div>
-        </div>
-
-        <div class="service-item">
-            <div class="service-header">
-                <span class="service-number">17</span>
-                <span class="service-title">Asistență pentru start-up-uri</span>
-                <span class="service-price">250-450 EUR/ Proiect</span>
-                <span class="service-toggle">+</span>
-            </div>
-            <div class="service-content">
-                <div class="service-content-inner">
-                <p>Oferim sprijin integrat, de la elaborarea planului de afaceri până la structurarea contabilă. Ghidăm cu precizie lansarea și dezvoltarea afacerii, asigurând o fundație solidă din punct de vedere financiar și administrativ.</p>
-                <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
-              </div>
-            </div>
-        </div>
-
-        <div class="service-item">
-            <div class="service-header">
-                <span class="service-number">18</span>
-                <span class="service-title">Planificare fiscală internațională</span>
-                <span class="service-price">800 EUR/ Proiect</span>
-                <span class="service-toggle">+</span>
-            </div>
-        <div class="service-content">
-            <div class="service-content-inner">
-            <p>Oferim consultanță dedicată companiilor cu activitate internațională, optimizând fiscalitatea și asigurând conformitatea transfrontalieră. Furnizăm strategii precise, menite să sporească eficiența și să minimizeze riscurile fiscale.</p>
-            <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
-            </div>
-          </div>
-        </div>
-
-        <p class="category-label">Prudenta</p>
-
-        <div class="service-item">
-            <div class="service-header" >
-                <span class="service-number">19</span>
-                <span class="service-title">Audit financiar intern</span>
-                <span class="service-price">350-500 EUR/ RAPORT</span>
-                <span class="service-toggle">+</span>
-            </div>
-            <div class="service-content">
-                <div class="service-content-inner">
-                <p>Analizăm riscurile și procesele financiare pentru a garanta conformitatea și eficiența operațională. Furnizăm rapoarte clare și recomandări aplicate, menite să optimizeze funcționarea afacerii și să protejeze resursele companiei.</p> 
-                <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
-                </div>          
-            </div>
-        </div>
-
-        <div class="service-item">
-            <div class="service-header" >
-                <span class="service-number">20</span>
-                <span class="service-title">Financial forensis</span>
-                <span class="service-price">2500 EUR/ Investigatie</span>
-                <span class="service-toggle">+</span>
-            </div>
-            <div class="service-content">
-                <div class="service-content-inner">
-                <p>Derulăm investigații financiare și acțiuni antifraudă pentru a identifica nereguli și a proteja activele companiei. Furnizăm rapoarte precise și recomandări aplicate, menite să prevină și să gestioneze eficient riscurile financiare.</p> 
-                <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a> 
-                </div>         
-            </div>
-        </div>
-
-        <div class="service-item">
-            <div class="service-header">
-                <span class="service-number">21</span>
-                <span class="service-title">Proiecție financiară și simulare de scenarii</span>
-                <span class="service-price">1500 EUR/ Raport</span>
-                <span class="service-toggle">+</span>
-            </div>
-            <div class="service-content">
-                <div class="service-content-inner">
-                <p>Oferim analize și simulări pentru diverse scenarii financiare, sprijinindu-te să anticipezi rezultate și să iei decizii strategice bine fundamentate.</p>
-                <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="service-item">
-            <div class="service-header">
-                <span class="service-number">22</span>
-                <span class="service-title">Suport digital & securitate financiară</span>
-                <span class="service-price">170-400 EUR/ Proiect</span>
-                <span class="service-toggle">+</span>
-            </div>
-            <div class="service-content">
-                <div class="service-content-inner">
-                <p>Implementăm soluții digitale menite să asigure gestionarea eficientă a finanțelor și protecția datelor. Garantăm securitate, conformitate și eficiență în toate operațiunile tale financiare.</p>
-                <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="service-item">
-            <div class="service-header">
-                <span class="service-number">23</span>
-                <span class="service-title">Audit intern și evaluare a controlului financiar</span>
-                <span class="service-price">1000-1800 EUR/ Sesiune</span>
-                <span class="service-toggle">+</span>
-            </div>
-        <div class="service-content">
-            <div class="service-content-inner">
-            <p>Analizăm procesele și controalele financiare interne pentru a identifica riscuri și a optimiza performanța. Furnizăm rapoarte clare și recomandări aplicate, menite să consolideze transparența și eficiența financiară.</p>
-            <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>
-            </div>
-            </div>
-        </div>
-
-        <div class="service-item">
-            <div class="service-header" >
-                <span class="service-number">24</span>
-                <span class="service-title">Analiză și audit de gestiune a stocurilor </span>
-                <span class="service-price">700-1200 EUR/ Audit</span>
-                <span class="service-toggle">+</span>
-            </div>
-        <div class="service-content">
-            <div class="service-content-inner">
-                <p>Analizăm gestionarea stocurilor pentru a identifica ineficiențele și a optimiza procesele operaționale. Furnizăm recomandări precise, menite să reducă costurile și să îmbunătățească controlul inventarului.</p> 
-                <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>    
-                </div> 
-              </div>     
-            </div>
-
-            <div class="service-item">
-            <div class="service-header">
-                <span class="service-number">25</span>
-                <span class="service-title">Servicii de contabilitate completă și raportare fiscală</span>
-                <span class="service-price">700-1200 EUR/ Luna</span>
-                <span class="service-toggle">+</span>
-            </div>
-            <div class="service-content">
-                <div class="service-content-inner">
-                <p>Oferim gestionarea completă a contabilității și raportarea fiscală conformă. Garantăm transparență, acuratețe și suport pentru luarea deciziilor financiare strategice.</p> 
-                <a href="Contact%20Us.html#" class="learn-more">Descopera mai multe</a>   
-                </div>       
-            </div>
-        </div>
-        </div>
-
-   </section>
-      <div class="empty-space"><span></span></div>
-      
-        <footer class="social-footer">
-  <div class="social-icons">
-
-<a href="https://x.com/EmberstoneF" class="social-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-    </svg>
-</a>
-
-<a href="https://www.instagram.com/emberstonefinance?igsh=MXBtMDJhM3V6b3Jsdw==" class="social-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-    </svg>
-</a>
-
-<a href="https://www.linkedin.com/in/emberstone-finance-5019ba3aa?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-    </svg>
-</a>
-
-<a href="https://www.facebook.com/share/1DTyYT7fWn/" class="social-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
-    </svg>
-</a>
-
-<a href="https://youtube.com/@emberstonefinance?si=WDoKBEq7fD8gbdIe" class="social-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-    </svg>
-</a>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <div class="cart-empty-icon">🛒</div>
+        <p class="cart-empty-text">Coșul tău este gol</p>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-subtotal">
+        <span class="subtotal-label">Subtotal</span>
+        <span class="subtotal-value" id="subtotalValue">€0</span>
+      </div>
+      <div class="cart-total">
+        <span class="total-label">Total</span>
+        <span class="total-value" id="totalValue">€0</span>
+      </div>
+      <button class="checkout-btn" id="checkoutBtn" onclick="openCheckout()" disabled>Continuă la rezervare</button>
+    </div>
   </div>
-</footer>
-  </body>
+
+  <!-- CHECKOUT MODAL -->
+  <div class="checkout-modal" id="checkoutModal">
+    <div class="checkout-header">
+      <h3 class="checkout-title">Finalizează rezervarea</h3>
+      <button class="close-cart" onclick="closeCheckout()">×</button>
+    </div>
+    <div class="checkout-content">
+      <form id="checkoutForm" onsubmit="submitBooking(event)">
+        <div class="form-group">
+          <label class="form-label">Nume complet *</label>
+          <input type="text" class="form-input" id="fullName" placeholder="Ion Popescu" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Numele companiei</label>
+          <input type="text" class="form-input" id="companyName" placeholder="SC Exemplu SRL">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Adresă de email *</label>
+          <input type="email" class="form-input" id="email" placeholder="contact@exemplu.ro" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Locație *</label>
+          <input type="text" class="form-input" id="location" placeholder="București, România" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Luna preferată *</label>
+            <select class="form-select" id="preferredMonth" required>
+              <option value="">Selectează luna</option>
+              <option value="Mai 2026">Mai 2026</option>
+              <option value="Iunie 2026">Iunie 2026</option>
+              <option value="Iulie 2026">Iulie 2026</option>
+              <option value="August 2026">August 2026</option>
+              <option value="Septembrie 2026">Septembrie 2026</option>
+              <option value="Octombrie 2026">Octombrie 2026</option>
+              <option value="Noiembrie 2026">Noiembrie 2026</option>
+              <option value="Decembrie 2026">Decembrie 2026</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tip serviciu</label>
+            <select class="form-select" id="serviceType">
+              <option value="La sediu">La sediu</option>
+              <option value="Remote">Remote</option>
+              <option value="Hibrid">Hibrid</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="checkout-footer">
+      <button class="submit-btn" onclick="submitBooking(event)">Confirmă rezervarea</button>
+    </div>
+  </div>
+
+  <!-- CONFIRMATION MODAL -->
+  <div class="confirmation-modal" id="confirmationModal">
+    <div class="confirmation-icon">✓</div>
+    <h3 class="confirmation-title">Rezervare confirmată</h3>
+    <p class="confirmation-message">Mulțumim pentru alegerea ta. Echipa noastră te va contacta în curând pentru a finaliza detaliile.</p>
+    <div class="confirmation-details" id="confirmationDetails"></div>
+    <button class="close-confirmation" onclick="closeConfirmation()">Închide</button>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast">
+    <span class="toast-icon">✓</span>
+    <span class="toast-message" id="toastMessage">Serviciu adăugat în coș</span>
+  </div>
+
+  <footer class="social-footer">
+    <div class="social-icons">
+      <a href="https://x.com/EmberstoneF" class="social-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/emberstonefinance?igsh=MXBtMDJhM3V6b3Jsdw==" class="social-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/emberstone-finance-5019ba3aa?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+        </svg>
+      </a>
+      <a href="https://www.facebook.com/share/1DTyYT7fWn/" class="social-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+        </svg>
+      </a>
+      <a href="https://youtube.com/@emberstonefinance?si=WDoKBEq7fD8gbdIe" class="social-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
   <script>
-   const hamburger = document.querySelector('.hamburger');
-   const navMenu = document.querySelector('.nav-menu');
+    // ==================== CART STATE ====================
+    let cart = [];
 
-   hamburger.addEventListener('click',()=> {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-   });
+    // ==================== HAMBURGER MENU ====================
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
 
-   document.querySelectorAll('.service-header').forEach(header => {
-    header.addEventListener('click',() =>{
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    // ==================== SERVICE ACCORDION ====================
+    document.querySelectorAll('.service-header').forEach(header => {
+      header.addEventListener('click', (e) => {
+        // Don't toggle if clicking on the add to cart button
+        if (e.target.classList.contains('add-to-cart-btn')) return;
+        
         const item = header.parentElement;
         const isActive = item.classList.contains('active');
 
-        document.querySelectorAll('.service-item').forEach(otheritem => {
-            otheritem.classList.remove('active');
+        document.querySelectorAll('.service-item').forEach(otherItem => {
+          otherItem.classList.remove('active');
         });
-        if(!isActive){
-            item.classList.add('active');
-        }
-    });
-   });
-  </script>
 
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // ==================== ADD TO CART ====================
+    function addToCart(id) {
+      const serviceEl = document.querySelector(`.service-item[data-id="${id}"]`);
+      if (!serviceEl) return;
+
+      const name = serviceEl.dataset.name;
+      const price = parseFloat(serviceEl.dataset.price);
+      const icon = serviceEl.dataset.icon;
+
+      const existingItem = cart.find(item => item.id === id);
+
+      if (existingItem) {
+        existingItem.quantity++;
+      } else {
+        cart.push({
+          id,
+          name,
+          price,
+          icon,
+          quantity: 1,
+          type: 'service'
+        });
+      }
+
+      // Button feedback
+      const btn = serviceEl.querySelector('.add-to-cart-btn');
+      btn.classList.add('added');
+      btn.textContent = '✓ Adăugat';
+      setTimeout(() => {
+        btn.classList.remove('added');
+        btn.textContent = 'Adaugă în coș';
+      }, 1500);
+
+      renderCart();
+      showToast(`${name} a fost adăugat în coș`);
+      saveCart();
+    }
+
+    // ==================== REMOVE FROM CART ====================
+    function removeFromCart(id) {
+      cart = cart.filter(item => item.id !== id);
+      renderCart();
+      saveCart();
+    }
+
+    // ==================== UPDATE QUANTITY ====================
+    function updateQuantity(id, change) {
+      const item = cart.find(item => item.id === id);
+      if (!item) return;
+
+      item.quantity += change;
+
+      if (item.quantity <= 0) {
+        removeFromCart(id);
+      } else {
+        renderCart();
+        saveCart();
+      }
+    }
+
+    // ==================== RENDER CART ====================
+    function renderCart() {
+      const cartItems = document.getElementById('cartItems');
+      const cartCount = document.getElementById('cartCount');
+      const subtotalEl = document.getElementById('subtotalValue');
+      const totalEl = document.getElementById('totalValue');
+      const checkoutBtn = document.getElementById('checkoutBtn');
+
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartCount.textContent = totalItems;
+      cartCount.classList.toggle('visible', totalItems > 0);
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = `
+          <div class="cart-empty">
+            <div class="cart-empty-icon">🛒</div>
+            <p class="cart-empty-text">Coșul tău este gol</p>
+          </div>
+        `;
+        subtotalEl.textContent = '€0';
+        totalEl.textContent = '€0';
+        checkoutBtn.disabled = true;
+        return;
+      }
+
+      checkoutBtn.disabled = false;
+
+      cartItems.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <div class="cart-item-icon">${item.icon}</div>
+          <div class="cart-item-details">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-type">Serviciu</div>
+            <div class="cart-item-price">€${(item.price * item.quantity).toLocaleString()}</div>
+            <div class="cart-item-quantity">
+              <button class="qty-btn" onclick="updateQuantity('${item.id}', -1)">−</button>
+              <span class="qty-value">${item.quantity}</span>
+              <button class="qty-btn" onclick="updateQuantity('${item.id}', 1)">+</button>
+            </div>
+          </div>
+          <button class="remove-item" onclick="removeFromCart('${item.id}')">×</button>
+        </div>
+      `).join('');
+
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      subtotalEl.textContent = '€' + subtotal.toLocaleString();
+      totalEl.textContent = '€' + subtotal.toLocaleString();
+    }
+
+    // ==================== MODAL FUNCTIONS ====================
+    function toggleCart() {
+      const modal = document.getElementById('cartModal');
+      const overlay = document.getElementById('modalOverlay');
+      const isActive = modal.classList.contains('active');
+
+      modal.classList.toggle('active');
+      overlay.classList.toggle('active', !isActive);
+
+      // Close nav menu if open
+      if (navMenu.classList.contains('active')) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      }
+    }
+
+    function closeAllModals() {
+      document.getElementById('cartModal').classList.remove('active');
+      document.getElementById('checkoutModal').classList.remove('active');
+      document.getElementById('confirmationModal').classList.remove('active');
+      document.getElementById('modalOverlay').classList.remove('active');
+    }
+
+    function openCheckout() {
+      document.getElementById('cartModal').classList.remove('active');
+      document.getElementById('checkoutModal').classList.add('active');
+    }
+
+    function closeCheckout() {
+      document.getElementById('checkoutModal').classList.remove('active');
+      document.getElementById('cartModal').classList.add('active');
+    }
+
+    function closeConfirmation() {
+      closeAllModals();
+      cart = [];
+      renderCart();
+      saveCart();
+      document.getElementById('checkoutForm').reset();
+    }
+
+    // ==================== SUBMIT BOOKING ====================
+    function submitBooking(event) {
+      event.preventDefault();
+
+      const fullName = document.getElementById('fullName').value.trim();
+      const companyName = document.getElementById('companyName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const location = document.getElementById('location').value.trim();
+      const preferredMonth = document.getElementById('preferredMonth').value;
+      const serviceType = document.getElementById('serviceType').value;
+
+      if (!fullName || !email || !location || !preferredMonth) {
+        showToast('Te rugăm să completezi toate câmpurile obligatorii');
+        return;
+      }
+
+      // Generate scheduled date
+      const scheduledDate = generateScheduledDate(preferredMonth);
+      const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+      // Render confirmation details
+      const detailsEl = document.getElementById('confirmationDetails');
+      detailsEl.innerHTML = `
+        <div class="confirmation-detail-row">
+          <span class="detail-label">Client</span>
+          <span class="detail-value">${fullName}</span>
+        </div>
+        ${companyName ? `
+        <div class="confirmation-detail-row">
+          <span class="detail-label">Companie</span>
+          <span class="detail-value">${companyName}</span>
+        </div>
+        ` : ''}
+        <div class="confirmation-detail-row">
+          <span class="detail-label">Locație</span>
+          <span class="detail-value">${location}</span>
+        </div>
+        <div class="confirmation-detail-row">
+          <span class="detail-label">Tip</span>
+          <span class="detail-value">${serviceType}</span>
+        </div>
+        <div class="confirmation-detail-row">
+          <span class="detail-label">Data programată</span>
+          <span class="detail-value scheduled-date">${scheduledDate}</span>
+        </div>
+        <div class="confirmation-detail-row">
+          <span class="detail-label">Total estimat</span>
+          <span class="detail-value">€${totalAmount.toLocaleString()}</span>
+        </div>
+      `;
+
+      // Show confirmation
+      document.getElementById('checkoutModal').classList.remove('active');
+      document.getElementById('confirmationModal').classList.add('active');
+    }
+
+    // ==================== GENERATE SCHEDULED DATE ====================
+    function generateScheduledDate(monthYear) {
+      const months = {
+        'Mai': 4, 'Iunie': 5, 'Iulie': 6, 'August': 7,
+        'Septembrie': 8, 'Octombrie': 9, 'Noiembrie': 10, 'Decembrie': 11
+      };
+      
+      const parts = monthYear.split(' ');
+      const month = parts[0];
+      const year = parseInt(parts[1]);
+      const monthIndex = months[month];
+
+      // Generate random business day
+      let day;
+      do {
+        day = Math.floor(Math.random() * 20) + 5;
+        const date = new Date(year, monthIndex, day);
+        if (date.getDay() !== 0 && date.getDay() !== 6) break;
+      } while (true);
+
+      return `${day} ${month} ${year}`;
+    }
+
+    // ==================== TOAST NOTIFICATION ====================
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+
+      toastMessage.textContent = message;
+      toast.classList.add('show');
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    // ==================== LOCAL STORAGE ====================
+    function saveCart() {
+      localStorage.setItem('emberstoneCart', JSON.stringify(cart));
+    }
+
+    function loadCart() {
+      const saved = localStorage.getItem('emberstoneCart');
+      if (saved) {
+        cart = JSON.parse(saved);
+        renderCart();
+      }
+    }
+
+    // ==================== INITIALIZE ====================
+    document.addEventListener('DOMContentLoaded', () => {
+      loadCart();
+    });
+  </script>
+</body>
 </html>
 
