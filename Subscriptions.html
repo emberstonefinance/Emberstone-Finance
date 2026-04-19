@@ -2,6 +2,7 @@
 <html>
     <title>Subscriptions</title>
         <link rel="icon" type="image/jpg" href="icon.jpg">
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
 
     body{
@@ -617,6 +618,11 @@
             background-position: right 1rem center;
         }
 
+        .form-group select option {
+            background: #fff;
+            color: #2c2c2c;
+        }
+
         .submit-button {
             padding: 1.25rem 2rem;
             font-family: 'Montserrat', sans-serif;
@@ -687,6 +693,370 @@ min-height: 3rem;
 margin-left: 2rem;
 }
 
+/* ==================== SUBSCRIPTION MODAL STYLES ==================== */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-container {
+    background: #fff;
+    width: 100%;
+    max-width: 550px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+}
+
+.modal-overlay.active .modal-container {
+    transform: translateY(0) scale(1);
+}
+
+.modal-header {
+    padding: 2.5rem 2.5rem 1.5rem;
+    border-bottom: 1px solid #e8e6e1;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid #e8e6e1;
+    cursor: pointer;
+    font-size: 1.25rem;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    border-color: #8b7355;
+    color: #8b7355;
+}
+
+.modal-tier {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #b8a88a;
+    margin-bottom: 0.5rem;
+}
+
+.modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+}
+
+.modal-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: #8b7355;
+}
+
+.modal-price span {
+    font-size: 0.9rem;
+    color: #999;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+.modal-body {
+    padding: 2rem 2.5rem;
+}
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.modal-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.modal-form .form-group label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #888;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.modal-form .form-group input,
+.modal-form .form-group select,
+.modal-form .form-group textarea {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    padding: 1rem;
+    border: 1px solid #e8e6e1;
+    background: #faf9f7;
+    color: #2c2c2c;
+    transition: all 0.3s ease;
+    outline: none;
+    width: 100%;
+}
+
+.modal-form .form-group input:focus,
+.modal-form .form-group select:focus,
+.modal-form .form-group textarea:focus {
+    border-color: #b8a88a;
+    background: #fff;
+}
+
+.modal-form .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.modal-form .form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-color: #faf9f7;
+}
+
+.modal-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 500px) {
+    .modal-form .form-row {
+        grid-template-columns: 1fr;
+    }
+    .modal-header, .modal-body, .modal-footer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+.modal-footer {
+    padding: 1.5rem 2.5rem 2.5rem;
+    border-top: 1px solid #e8e6e1;
+    background: #faf9f7;
+}
+
+.modal-submit {
+    width: 100%;
+    padding: 1.25rem 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: #1a1a1a;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-submit:hover {
+    background: #8b7355;
+}
+
+.modal-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.modal-note {
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: #999;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* Confirmation View */
+.modal-confirmation {
+    display: none;
+    padding: 4rem 2.5rem;
+    text-align: center;
+}
+
+.modal-confirmation.active {
+    display: block;
+}
+
+.modal-form-view {
+    display: block;
+}
+
+.modal-form-view.hidden {
+    display: none;
+}
+
+.confirmation-icon {
+    width: 80px;
+    height: 80px;
+    border: 2px solid #8b7355;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    animation: scaleIn 0.5s ease;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.confirmation-icon span {
+    font-size: 2.5rem;
+    color: #8b7355;
+}
+
+.confirmation-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+}
+
+.confirmation-message {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.confirmation-details {
+    background: #faf9f7;
+    border: 1px solid #e8e6e1;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.confirmation-detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e8e6e1;
+}
+
+.confirmation-detail-row:last-child {
+    border-bottom: none;
+}
+
+.confirmation-detail-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #888;
+}
+
+.confirmation-detail-value {
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    font-weight: 400;
+}
+
+.confirmation-appointment {
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.appointment-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #b8a88a;
+    margin-bottom: 0.5rem;
+}
+
+.appointment-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 0.25rem;
+}
+
+.appointment-time {
+    font-size: 0.85rem;
+    color: #999;
+}
+
+.confirmation-close {
+    padding: 1rem 3rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid #1a1a1a;
+    color: #1a1a1a;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.confirmation-close:hover {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+/* Modal Scrollbar */
+.modal-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.modal-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal-container::-webkit-scrollbar-thumb {
+    background: #d4d0c7;
+    border-radius: 2px;
+}
+
   </style>
   <body>
    <header>
@@ -748,7 +1118,12 @@ margin-left: 2rem;
                     <li class="unavailable">Consilier personal</li>
                 </ul>
                 <div class="services-included">5 servicii incluse</div>
-                <button class="cta-button"><a class="textos" href="Contact%20Us.html#">Get Started</a></button>
+                <button class="cta-button" 
+                    data-plan="Esential" 
+                    data-tier="Complimentary" 
+                    data-price="0" 
+                    data-period="forever"
+                    onclick="openSubscriptionModal(this)">Get Started</button>
             </div>
 
 
@@ -769,7 +1144,13 @@ margin-left: 2rem;
                     <li class="unavailable">Consilier dedicat</li>
                 </ul>
                 <div class="services-included">12 servicii incluse</div>
-                <button class="cta-button"><a class="textos" href="Contact%20Us.html#">Select Plan</a></button>
+                <button class="cta-button" 
+                    data-plan="Basic" 
+                    data-tier="Foundation" 
+                    data-price="250" 
+                    data-price-annual="200"
+                    data-period="month"
+                    onclick="openSubscriptionModal(this)">Select Plan</button>
             </div>
 
 
@@ -790,7 +1171,13 @@ margin-left: 2rem;
                     <li><span class="check">✓</span> Acces exclusiv pentru investiții</li>
                 </ul>
                 <div class="services-included">18 servicii incluse</div>
-                <button class="cta-button"><a class="textos" href="Contact%20Us.html#">Select Plan</a></button>
+                <button class="cta-button" 
+                    data-plan="Premium" 
+                    data-tier="Distinguished" 
+                    data-price="899" 
+                    data-price-annual="720"
+                    data-period="month"
+                    onclick="openSubscriptionModal(this)">Select Plan</button>
             </div>
 
 
@@ -811,7 +1198,13 @@ margin-left: 2rem;
                     <li><span class="check">✓</span> Echipă dedicată 24/7</li>
                 </ul>
                 <div class="services-included">Toate 25 servicii incluse</div>
-                <button class="cta-button"><a class="textos" href="Contact%20Us.html#">Request Consultation</a></button>
+                <button class="cta-button" 
+                    data-plan="Platinum Client" 
+                    data-tier="Pinnacle" 
+                    data-price="3500" 
+                    data-price-annual="2800"
+                    data-period="month"
+                    onclick="openSubscriptionModal(this)">Request Consultation</button>
             </div>
         </div>
     </section>
@@ -916,6 +1309,138 @@ margin-left: 2rem;
 </a>
   </div>
 </footer>
+
+
+<!-- ==================== SUBSCRIPTION MODAL ==================== -->
+<div class="modal-overlay" id="subscriptionModal">
+    <div class="modal-container">
+        <!-- Form View -->
+        <div class="modal-form-view" id="modalFormView">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeSubscriptionModal()">×</button>
+                <p class="modal-tier" id="modalTier">Foundation</p>
+                <h2 class="modal-title" id="modalPlanName">Basic Membership</h2>
+                <p class="modal-price"><span id="modalPrice">$250</span> <span id="modalPeriod">/ month</span></p>
+            </div>
+            
+            <div class="modal-body">
+                <form class="modal-form" id="subscriptionForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="subFirstName">Prenume *</label>
+                            <input type="text" id="subFirstName" required placeholder="Ion">
+                        </div>
+                        <div class="form-group">
+                            <label for="subLastName">Nume *</label>
+                            <input type="text" id="subLastName" required placeholder="Popescu">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subEmail">Adresa de Email *</label>
+                        <input type="email" id="subEmail" required placeholder="email@exemplu.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subPhone">Număr de Telefon</label>
+                        <input type="tel" id="subPhone" placeholder="+40 7XX XXX XXX">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subCompany">Numele Companiei (opțional)</label>
+                        <input type="text" id="subCompany" placeholder="Compania Dumneavoastră">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subGoals">Obiective Financiare *</label>
+                        <select id="subGoals" required>
+                            <option value="">Selectați obiectivul principal...</option>
+                            <option value="wealth-growth">Creșterea averii</option>
+                            <option value="wealth-preservation">Conservarea averii</option>
+                            <option value="retirement">Planificare pentru pensie</option>
+                            <option value="estate">Planificare succesorală</option>
+                            <option value="tax">Optimizare fiscală</option>
+                            <option value="business">Consultanță de afaceri</option>
+                            <option value="other">Altele</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subReason">De ce ați ales acest abonament? *</label>
+                        <textarea id="subReason" required placeholder="Vă rugăm să ne spuneți ce v-a atras la acest plan și cum vă putem ajuta să vă atingeți obiectivele financiare..."></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="subMonth">Luna Preferată *</label>
+                            <select id="subMonth" required>
+                                <option value="">Selectați luna...</option>
+                                <option value="1">Ianuarie</option>
+                                <option value="2">Februarie</option>
+                                <option value="3">Martie</option>
+                                <option value="4">Aprilie</option>
+                                <option value="5">Mai</option>
+                                <option value="6">Iunie</option>
+                                <option value="7">Iulie</option>
+                                <option value="8">August</option>
+                                <option value="9">Septembrie</option>
+                                <option value="10">Octombrie</option>
+                                <option value="11">Noiembrie</option>
+                                <option value="12">Decembrie</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="subYear">Anul</label>
+                            <select id="subYear">
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="modal-submit" onclick="submitSubscription()">Trimite Cererea</button>
+                <p class="modal-note">Informațiile dumneavoastră sunt tratate cu cea mai mare confidențialitate.</p>
+            </div>
+        </div>
+        
+        <!-- Confirmation View -->
+        <div class="modal-confirmation" id="modalConfirmation">
+            <div class="confirmation-icon">
+                <span>✓</span>
+            </div>
+            <h2 class="confirmation-title">Cerere Confirmată</h2>
+            <p class="confirmation-message">Vă mulțumim pentru interesul acordat. Un consultant va lua legătura cu dumneavoastră în curând pentru a finaliza înscrierea.</p>
+            
+            <div class="confirmation-details">
+                <div class="confirmation-detail-row">
+                    <span class="confirmation-detail-label">Abonament</span>
+                    <span class="confirmation-detail-value" id="confirmPlan">Premium</span>
+                </div>
+                <div class="confirmation-detail-row">
+                    <span class="confirmation-detail-label">Nume</span>
+                    <span class="confirmation-detail-value" id="confirmName">Ion Popescu</span>
+                </div>
+                <div class="confirmation-detail-row">
+                    <span class="confirmation-detail-label">Email</span>
+                    <span class="confirmation-detail-value" id="confirmEmail">email@exemplu.com</span>
+                </div>
+            </div>
+            
+            <div class="confirmation-appointment">
+                <p class="appointment-label">Programare Consultație</p>
+                <p class="appointment-date" id="appointmentDate">Joi, 15 Mai 2025</p>
+                <p class="appointment-time" id="appointmentTime">Între 10:00 - 12:00</p>
+            </div>
+            
+            <button class="confirmation-close" onclick="closeSubscriptionModal()">Închide</button>
+        </div>
+    </div>
+</div>
+
+
           <script>
    const hamburger = document.querySelector('.hamburger');
    const navMenu = document.querySelector('.nav-menu');
@@ -978,6 +1503,177 @@ margin-left: 2rem;
                 successMessage.classList.remove('show');
             }, 5000);
         });
+
+
+// ==================== SUBSCRIPTION MODAL JAVASCRIPT ====================
+
+let currentPlan = {};
+
+function openSubscriptionModal(button) {
+    const plan = button.dataset.plan;
+    const tier = button.dataset.tier;
+    let price = button.dataset.price;
+    const priceAnnual = button.dataset.priceAnnual;
+    const period = button.dataset.period;
+    
+    // Check if annual billing is active
+    if (isAnnual && priceAnnual) {
+        price = priceAnnual;
+    }
+    
+    // Store current plan info
+    currentPlan = { plan, tier, price, period };
+    
+    // Update modal content
+    document.getElementById('modalTier').textContent = tier;
+    document.getElementById('modalPlanName').textContent = plan + ' Membership';
+    document.getElementById('modalPrice').textContent = '$' + parseInt(price).toLocaleString();
+    
+    if (period === 'forever') {
+        document.getElementById('modalPeriod').textContent = '/ pentru totdeauna';
+    } else {
+        document.getElementById('modalPeriod').textContent = isAnnual ? '/ lună, facturat anual' : '/ lună';
+    }
+    
+    // Reset form and show form view
+    document.getElementById('subscriptionForm').reset();
+    document.getElementById('modalFormView').classList.remove('hidden');
+    document.getElementById('modalConfirmation').classList.remove('active');
+    
+    // Show modal
+    document.getElementById('subscriptionModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeSubscriptionModal() {
+    document.getElementById('subscriptionModal').classList.remove('active');
+    document.body.style.overflow = '';
+    
+    // Reset after animation
+    setTimeout(() => {
+        document.getElementById('modalFormView').classList.remove('hidden');
+        document.getElementById('modalConfirmation').classList.remove('active');
+        document.getElementById('subscriptionForm').reset();
+    }, 300);
+}
+
+function submitSubscription() {
+    const firstName = document.getElementById('subFirstName').value.trim();
+    const lastName = document.getElementById('subLastName').value.trim();
+    const email = document.getElementById('subEmail').value.trim();
+    const phone = document.getElementById('subPhone').value.trim();
+    const company = document.getElementById('subCompany').value.trim();
+    const goals = document.getElementById('subGoals').value;
+    const reason = document.getElementById('subReason').value.trim();
+    const month = document.getElementById('subMonth').value;
+    const year = document.getElementById('subYear').value;
+    
+    // Validate required fields
+    if (!firstName || !lastName || !email || !goals || !reason || !month) {
+        alert('Vă rugăm să completați toate câmpurile obligatorii.');
+        return;
+    }
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Vă rugăm să introduceți o adresă de email validă.');
+        return;
+    }
+    
+    // Generate appointment date
+    const appointment = generateAppointmentDate(parseInt(month), parseInt(year));
+    
+    // Update confirmation view
+    document.getElementById('confirmPlan').textContent = currentPlan.plan;
+    document.getElementById('confirmName').textContent = firstName + ' ' + lastName;
+    document.getElementById('confirmEmail').textContent = email;
+    document.getElementById('appointmentDate').textContent = appointment.date;
+    document.getElementById('appointmentTime').textContent = appointment.time;
+    
+    // Switch to confirmation view
+    document.getElementById('modalFormView').classList.add('hidden');
+    document.getElementById('modalConfirmation').classList.add('active');
+    
+    // Here you would typically send the data to your server
+    console.log('Subscription request:', {
+        plan: currentPlan.plan,
+        tier: currentPlan.tier,
+        price: currentPlan.price,
+        period: currentPlan.period,
+        firstName,
+        lastName,
+        email,
+        phone,
+        company,
+        goals,
+        reason,
+        preferredMonth: month,
+        preferredYear: year,
+        appointmentDate: appointment.date,
+        appointmentTime: appointment.time
+    });
+}
+
+function generateAppointmentDate(month, year) {
+    const today = new Date();
+    const minDate = new Date(today.getTime() + (14 * 24 * 60 * 60 * 1000)); // At least 14 days from now
+    
+    // Get days in the selected month
+    const daysInMonth = new Date(year, month, 0).getDate();
+    
+    // Generate a random day in the month
+    let day = Math.floor(Math.random() * daysInMonth) + 1;
+    let appointmentDate = new Date(year, month - 1, day);
+    
+    // Ensure the date is at least 14 days away
+    if (appointmentDate < minDate) {
+        appointmentDate = new Date(minDate.getTime() + (Math.random() * 14 * 24 * 60 * 60 * 1000));
+    }
+    
+    // Avoid weekends - move to Monday if Saturday/Sunday
+    const dayOfWeek = appointmentDate.getDay();
+    if (dayOfWeek === 0) appointmentDate.setDate(appointmentDate.getDate() + 1); // Sunday -> Monday
+    if (dayOfWeek === 6) appointmentDate.setDate(appointmentDate.getDate() + 2); // Saturday -> Monday
+    
+    // Format date in Romanian
+    const days = ['Duminică', 'Luni', 'Marți', 'Miercuri', 'Joi', 'Vineri', 'Sâmbătă'];
+    const months = ['Ianuarie', 'Februarie', 'Martie', 'Aprilie', 'Mai', 'Iunie', 
+                    'Iulie', 'August', 'Septembrie', 'Octombrie', 'Noiembrie', 'Decembrie'];
+    
+    const formattedDate = `${days[appointmentDate.getDay()]}, ${appointmentDate.getDate()} ${months[appointmentDate.getMonth()]} ${appointmentDate.getFullYear()}`;
+    
+    // Generate random time slot
+    const timeSlots = [
+        'Între 09:00 - 11:00',
+        'Între 10:00 - 12:00',
+        'Între 11:00 - 13:00',
+        'Între 14:00 - 16:00',
+        'Între 15:00 - 17:00',
+        'Între 16:00 - 18:00'
+    ];
+    const randomTime = timeSlots[Math.floor(Math.random() * timeSlots.length)];
+    
+    return {
+        date: formattedDate,
+        time: randomTime
+    };
+}
+
+// Close modal when clicking overlay
+document.getElementById('subscriptionModal').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('subscriptionModal')) {
+        closeSubscriptionModal();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.getElementById('subscriptionModal').classList.contains('active')) {
+        closeSubscriptionModal();
+    }
+});
+
     </script>
     </body>
 
